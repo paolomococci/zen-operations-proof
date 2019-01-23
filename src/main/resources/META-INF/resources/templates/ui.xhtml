@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+            <title>zen operation proof</title>
+        </f:facet>
+        <link type="text/css" rel="stylesheet" media="all" 
+              href="/webjars/font-awesome/5.6.1/css/all.css"/>
+        <link type="text/css" rel="stylesheet" media="all" 
+              href="css/style.css"/>
+        <ui:insert name="head"></ui:insert>
+    </h:head>
+    <h:body>
+        <ui:insert name="content"></ui:insert>
+        <p:contextMenu>
+            <p:menuitem value="home" url="/" icon="fa fa-fw fa-home"/>
+        </p:contextMenu>
+    </h:body>
+</html>
