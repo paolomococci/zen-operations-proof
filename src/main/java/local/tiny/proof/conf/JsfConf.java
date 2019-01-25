@@ -31,11 +31,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
-/**
- *
- * @author paolo mococci
- */
-
 @Configuration
 public class JsfConf 
         extends SpringBootServletInitializer
