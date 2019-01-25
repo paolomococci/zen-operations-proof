@@ -1,2 +1,2 @@
 # zen-operations-proof
-Operations Research project for Spring Boot with PrimeFaces
+Operative research project with Spring Boot, PrimeFaces, CLP-Java, Guava and more
