@@ -16,11 +16,10 @@
  *
  */
 
-package local.tiny.proof.wrapper;
+package local.tiny.proof.service;
 
 import com.google.common.collect.ImmutableBiMap;
 import com.quantego.clp.CLP;
-import com.quantego.clp.CLPObjective;
 import com.quantego.clp.CLPVariable;
 import org.junit.Assert;
 import org.junit.Test;
@@ -33,7 +32,7 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CoinorLinearProgrammingTests {
+public class CoinOrLinearProgrammingServiceTests {
 
     private final CLP clpModel = new CLP().maximization();
 
@@ -43,7 +42,7 @@ public class CoinorLinearProgrammingTests {
         CLPVariable x1 = clpModel.addVariable().bounds(0.0, Double.POSITIVE_INFINITY);
         clpModel.createExpression().add(x0, 2.0).add(x1, 1.0).leq(320.0);
         clpModel.createExpression().add(x0, 1.0).add(x1, 1.0).leq(240.0);
-        CLPObjective clpObjective = clpModel.addObjective(
+        clpModel.addObjective(
                 ImmutableBiMap.<CLPVariable, Double>builder()
                         .put(x0, 40.0)
                         .put(x1, 30.0).build(),
@@ -69,7 +68,7 @@ public class CoinorLinearProgrammingTests {
         objective = new HashMap<>();
         objective.put(x0, 40.0);
         objective.put(x1, 30.0);
-        CLPObjective clpObjective = clpModel.addObjective(objective, 0.0);
+        clpModel.addObjective(objective, 0.0);
         Assert.assertEquals(CLP.STATUS.OPTIMAL, clpModel.solve());
     }
 
@@ -85,7 +84,7 @@ public class CoinorLinearProgrammingTests {
                 put(x1, 30.0);
             }
         };
-        CLPObjective clpObjective = clpModel.addObjective(objective, 0.0);
+        clpModel.addObjective(objective, 0.0);
         Assert.assertEquals(CLP.STATUS.OPTIMAL, clpModel.solve());
         Assert.assertEquals(80.0, clpModel.getSolution(x0), 0.0);
     }
@@ -96,7 +95,7 @@ public class CoinorLinearProgrammingTests {
         CLPVariable x1 = clpModel.addVariable().bounds(0.0, Double.POSITIVE_INFINITY);
         clpModel.createExpression().add(x0, 2.0).add(x1, 1.0).leq(320.0);
         clpModel.createExpression().add(x0, 1.0).add(x1, 1.0).leq(240.0);
-        CLPObjective clpObjective = clpModel.addObjective(
+        clpModel.addObjective(
                 ImmutableBiMap.<CLPVariable, Double>builder()
                 .put(x0, 40.0)
                 .put(x1, 30.0).build(),
@@ -111,7 +110,7 @@ public class CoinorLinearProgrammingTests {
         CLPVariable x1 = clpModel.addVariable().bounds(0.0, Double.POSITIVE_INFINITY);
         clpModel.createExpression().add(x0, 2.0).add(x1, 1.0).leq(320.0);
         clpModel.createExpression().add(x0, 1.0).add(x1, 1.0).leq(240.0);
-        CLPObjective clpObjective = clpModel.addObjective(
+        clpModel.addObjective(
                 ImmutableBiMap.<CLPVariable, Double>builder()
                         .put(x0, 40.0)
                         .put(x1, 30.0).build(),
