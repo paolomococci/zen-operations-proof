@@ -12,7 +12,9 @@
 	<artifactId>zen-operations-proof</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>zen-operations-proof</name>
-	<description>Operations Research project for Spring Boot with PrimeFaces</description>
+	<description>
+		Operative research project with Spring Boot, PrimeFaces, CLP-Java, Guava and more
+	</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -50,6 +52,17 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>font-awesome</artifactId>
 			<version>5.6.1</version>
+		</dependency>
+                
+		<dependency>
+			<groupId>com.quantego</groupId>
+			<artifactId>clp-java</artifactId>
+			<version>1.16.10</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>27.0-jre</version>
 		</dependency>
 		
 		<dependency>
