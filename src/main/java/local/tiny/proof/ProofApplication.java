@@ -21,11 +21,6 @@ package local.tiny.proof;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- *
- * @author paolo mococci
- */
-
 @SpringBootApplication
 public class ProofApplication {
 
