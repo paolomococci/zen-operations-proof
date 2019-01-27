@@ -57,7 +57,7 @@ public class LinearProgrammingServiceTests {
     }
 
     @Test
-    public void updateLinearProgrammingModelNameByIdTest() {
+    public void deleteLinearProgrammingModelTest() {
         LinearProgramming linearProgrammingThree = new LinearProgramming();
         linearProgrammingThree.setName("sampleThree");
         linearProgrammingService.addLinearProgrammingModel(linearProgrammingThree);
