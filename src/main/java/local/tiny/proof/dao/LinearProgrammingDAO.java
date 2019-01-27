@@ -25,4 +25,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LinearProgrammingDAO
         extends JpaRepository<LinearProgramming, Integer> {
+
+    LinearProgramming findByName(String name);
 }
