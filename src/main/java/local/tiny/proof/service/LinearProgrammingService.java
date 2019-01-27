@@ -51,18 +51,6 @@ public class LinearProgrammingService {
     }
 
     @Transactional
-    public void updateLinearProgrammingModelNameById(Integer id, String name) {
-        LinearProgramming linearProgramming = linearProgrammingDAO.getOne(id);
-        linearProgramming.setName(name);
-    }
-
-    @Transactional
-    public void updateLinearProgrammingModelNameByOldName(String oldName, String newName) {
-        LinearProgramming linearProgramming = linearProgrammingDAO.findByName(oldName);
-        linearProgramming.setName(newName);
-    }
-
-    @Transactional
     public void deleteLinearProgrammingModel(LinearProgramming linearProgramming) {
         linearProgrammingDAO.deleteById(linearProgramming.getId());
     }
