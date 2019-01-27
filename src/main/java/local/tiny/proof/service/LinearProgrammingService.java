@@ -18,10 +18,52 @@
 
 package local.tiny.proof.service;
 
+import local.tiny.proof.dao.LinearProgrammingDAO;
+import local.tiny.proof.model.LinearProgramming;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
 public class LinearProgrammingService {
+
+    @Autowired
+    private LinearProgrammingDAO linearProgrammingDAO;
+
+    @Transactional
+    public void addLinearProgrammingModel(LinearProgramming linearProgramming) {
+        linearProgrammingDAO.save(linearProgramming);
+    }
+
+    public LinearProgramming retrieveLinearProgrammingModelById(Integer id) {
+        return linearProgrammingDAO.getOne(id);
+    }
+
+    public LinearProgramming retrieveLinearProgrammingModelByName(String name) {
+        return linearProgrammingDAO.findByName(name);
+    }
+
+    public List<LinearProgramming> retrieveLinearProgrammingModels() {
+        return linearProgrammingDAO.findAll();
+    }
+
+    @Transactional
+    public void updateLinearProgrammingModelNameById(Integer id, String name) {
+        LinearProgramming linearProgramming = linearProgrammingDAO.getOne(id);
+        linearProgramming.setName(name);
+    }
+
+    @Transactional
+    public void updateLinearProgrammingModelNameByOldName(String oldName, String newName) {
+        LinearProgramming linearProgramming = linearProgrammingDAO.findByName(oldName);
+        linearProgramming.setName(newName);
+    }
+
+    @Transactional
+    public void deleteLinearProgrammingModel(LinearProgramming linearProgramming) {
+        linearProgrammingDAO.deleteById(linearProgramming.getId());
+    }
 }
