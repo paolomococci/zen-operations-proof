@@ -18,10 +18,64 @@
 
 package local.tiny.proof.view;
 
+import local.tiny.proof.model.LinearProgramming;
+import local.tiny.proof.service.LinearProgrammingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import java.util.ArrayList;
+import java.util.List;
 
-@Named
+@Named(value = "lpView")
 @RequestScoped
 public class LinearProgrammingView {
+
+    private static final String SUCCESS = "success";
+    private static final String FAILURE = "failure";
+
+    @Autowired
+    LinearProgrammingService linearProgrammingService;
+
+    private List<LinearProgramming> linearProgrammingList;
+
+    private String name;
+
+    public String addLP() {
+        try {
+            LinearProgramming linearProgramming = new LinearProgramming();
+            linearProgramming.setName(name);
+            return SUCCESS;
+        } catch (DataAccessException dae) {
+            dae.getMessage();
+        }
+        return FAILURE;
+    }
+
+    public void reset() {
+        setName("");
+    }
+
+    public LinearProgrammingService getLinearProgrammingService() {
+        return linearProgrammingService;
+    }
+
+    public void setLinearProgrammingService(LinearProgrammingService linearProgrammingService) {
+        this.linearProgrammingService = linearProgrammingService;
+    }
+
+    public List<LinearProgramming> getLinearProgrammingList() {
+        linearProgrammingList = new ArrayList<>();
+        linearProgrammingList.addAll(linearProgrammingService.retrieveLinearProgrammingModels());
+        return linearProgrammingList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
