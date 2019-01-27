@@ -18,13 +18,10 @@
 
 package local.tiny.proof.model;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Data
 @Table(name = "LP_MODELS",
         uniqueConstraints = @UniqueConstraint(columnNames = {"NAME"}))
 public class LinearProgramming {
@@ -35,4 +32,16 @@ public class LinearProgramming {
 
     @NotBlank
     private String name;
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
