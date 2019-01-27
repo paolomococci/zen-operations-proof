@@ -27,6 +27,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -37,9 +38,9 @@ public class LinearProgrammingServiceTests {
 
     @Test
     public void retrieveLinearProgrammingModelsTest() {
-        LinearProgramming linearProgramming = new LinearProgramming();
-        linearProgramming.setName("sampleOne");
-        linearProgrammingService.addLinearProgrammingModel(linearProgramming);
+        LinearProgramming linearProgrammingOne = new LinearProgramming();
+        linearProgrammingOne.setName("sampleOne");
+        linearProgrammingService.addLinearProgrammingModel(linearProgrammingOne);
         List<LinearProgramming> linearProgrammingList = linearProgrammingService
                 .retrieveLinearProgrammingModels();
         Assert.assertFalse(linearProgrammingList.isEmpty());
@@ -47,11 +48,26 @@ public class LinearProgrammingServiceTests {
 
     @Test
     public void retrieveLinearProgrammingModelByNameTest() {
-        LinearProgramming linearProgramming = new LinearProgramming();
-        linearProgramming.setName("sampleTwo");
-        linearProgrammingService.addLinearProgrammingModel(linearProgramming);
+        LinearProgramming linearProgrammingTwo = new LinearProgramming();
+        linearProgrammingTwo.setName("sampleTwo");
+        linearProgrammingService.addLinearProgrammingModel(linearProgrammingTwo);
         LinearProgramming result = linearProgrammingService
                 .retrieveLinearProgrammingModelByName("sampleTwo");
-        Assert.assertTrue(result.getId() == linearProgramming.getId());
+        Assert.assertTrue(result.getId() == linearProgrammingTwo.getId());
+    }
+
+    @Test
+    public void updateLinearProgrammingModelNameByIdTest() {
+        LinearProgramming linearProgrammingThree = new LinearProgramming();
+        linearProgrammingThree.setName("sampleThree");
+        linearProgrammingService.addLinearProgrammingModel(linearProgrammingThree);
+        LinearProgramming result = linearProgrammingService
+                .retrieveLinearProgrammingModelByName("sampleThree");
+        Integer index = result.getId();
+        Assert.assertTrue(index == linearProgrammingThree.getId());
+        linearProgrammingService.deleteLinearProgrammingModel(linearProgrammingThree);
+        List<LinearProgramming> linearProgrammingList = linearProgrammingService
+                .retrieveLinearProgrammingModels();
+        Assert.assertFalse(linearProgrammingList.contains(linearProgrammingThree));
     }
 }
