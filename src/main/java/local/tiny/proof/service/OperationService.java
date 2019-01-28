@@ -38,8 +38,12 @@ public class OperationService {
         operationRepository.save(operation);
     }
 
-    public Optional<Operation> read(Integer id) {
+    public Optional<Operation> readById(Integer id) {
         return operationRepository.findById(id);
+    }
+
+    public Optional<Operation> readByName(String name) {
+        return operationRepository.findByName(name);
     }
 
     public Iterable<Operation> readAll() {
@@ -47,16 +51,12 @@ public class OperationService {
     }
 
     @Transactional
-    public void updateName(Integer id, String name) {
-        if (operationRepository.existsById(id)) {
-            operationRepository.findById(id)
-                    .get().setName(name);
-            operationRepository.flush();
-        }
+    public void deleteById(Integer id) {
+        operationRepository.deleteById(id);
     }
 
     @Transactional
-    public void delete(Integer id) {
-        operationRepository.deleteById(id);
+    public void deleteAll() {
+        operationRepository.deleteAll();
     }
 }
