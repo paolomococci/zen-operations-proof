@@ -51,6 +51,15 @@ public class OperationService {
     }
 
     @Transactional
+    public void updateNameById(Integer id, String name) {
+        Operation retrived = operationRepository.findById(id).get();
+        if (retrived != null) {
+            retrived.setName(name);
+            operationRepository.save(retrived);
+        }
+    }
+
+    @Transactional
     public void deleteById(Integer id) {
         operationRepository.deleteById(id);
     }
