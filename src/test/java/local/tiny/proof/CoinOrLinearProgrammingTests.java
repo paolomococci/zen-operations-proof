@@ -16,7 +16,7 @@
  *
  */
 
-package local.tiny.proof.service;
+package local.tiny.proof;
 
 import com.google.common.collect.ImmutableBiMap;
 import com.quantego.clp.CLP;
@@ -32,7 +32,7 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CoinOrLinearProgrammingServiceTests {
+public class CoinOrLinearProgrammingTests {
 
     private final CLP clpModel = new CLP().maximization();
 
