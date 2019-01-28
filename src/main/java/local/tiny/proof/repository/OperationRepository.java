@@ -21,11 +21,15 @@ package local.tiny.proof.repository;
 
 import local.tiny.proof.model.Operation;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public interface OperationRepository
         extends JpaRepository<Operation, Integer> {
 
-    Operation findByName(String name);
+    @Async
+    Optional<Operation> findByName(String name);
 }
