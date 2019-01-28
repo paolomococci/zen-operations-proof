@@ -26,6 +26,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OperationServiceTests {
@@ -39,5 +41,53 @@ public class OperationServiceTests {
         operation.setName("lpModelOne");
         operationService.create(operation);
         Assert.assertTrue(operationService.readByName("lpModelOne").isPresent());
+    }
+
+    @Test
+    public void readByIdTest() {
+        Operation operation = new Operation();
+        operation.setName("lpModelTwo");
+        operationService.create(operation);
+        Integer id = operationService.readByName("lpModelTwo").get().getId();
+        Assert.assertTrue(operationService.readById(id).isPresent());
+    }
+
+    @Test
+    public void readAllTest() {
+        Operation op1 = new Operation();
+        Operation op2 = new Operation();
+        operationService.create(op1);
+        operationService.create(op2);
+        Assert.assertTrue(operationService.readAll().spliterator().estimateSize() == 2L);
+    }
+
+    @Test
+    public void updateNameByIdTest() {
+        Operation operation = new Operation();
+        operation.setName("lpModelThree");
+        operationService.create(operation);
+        Integer id = operationService.readByName("lpModelThree").get().getId();
+        operationService.updateNameById(id, "lpSample");
+        Assert.assertTrue(operationService.readByName("lpSample").get().getId() == id);
+    }
+
+    @Test
+    public void deleteByIdTest() {
+        Operation operation = new Operation();
+        operation.setName("lpModelFour");
+        operationService.create(operation);
+        Integer id = operationService.readByName("lpModelFour").get().getId();
+        operationService.deleteById(id);
+        Assert.assertFalse(operationService.readById(id).isPresent());
+    }
+
+    @Test
+    public void deleteAllTest() {
+        Operation op1 = new Operation();
+        Operation op2 = new Operation();
+        operationService.create(op1);
+        operationService.create(op2);
+        operationService.deleteAll();
+        Assert.assertTrue(operationService.readAll().spliterator().estimateSize() == 0L);
     }
 }
