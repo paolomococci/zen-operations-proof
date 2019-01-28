@@ -16,15 +16,30 @@
  *
  */
 
-package local.tiny.proof.dao;
+package local.tiny.proof.model;
 
-import local.tiny.proof.model.LinearProgramming;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Repository
-public interface LinearProgrammingDAO
-        extends JpaRepository<LinearProgramming, Integer> {
+@Entity
+public class Operation {
 
-    LinearProgramming findByName(String name);
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    private String name;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

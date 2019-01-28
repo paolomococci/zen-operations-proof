@@ -18,40 +18,45 @@
 
 package local.tiny.proof.service;
 
-import local.tiny.proof.dao.LinearProgrammingDAO;
-import local.tiny.proof.model.LinearProgramming;
+
+import local.tiny.proof.model.Operation;
+import local.tiny.proof.repository.OperationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
-@Transactional(readOnly = true)
-public class LinearProgrammingService {
+public class OperationService {
 
     @Autowired
-    private LinearProgrammingDAO linearProgrammingDAO;
+    private OperationRepository operationRepository;
 
     @Transactional
-    public void addLinearProgrammingModel(LinearProgramming linearProgramming) {
-        linearProgrammingDAO.save(linearProgramming);
+    public void create(Operation operation) {
+        operationRepository.save(operation);
     }
 
-    public LinearProgramming retrieveLinearProgrammingModelById(Integer id) {
-        return linearProgrammingDAO.getOne(id);
+    public Optional<Operation> read(Integer id) {
+        return operationRepository.findById(id);
     }
 
-    public LinearProgramming retrieveLinearProgrammingModelByName(String name) {
-        return linearProgrammingDAO.findByName(name);
-    }
-
-    public List<LinearProgramming> retrieveLinearProgrammingModels() {
-        return linearProgrammingDAO.findAll();
+    public Iterable<Operation> readAll() {
+        return operationRepository.findAll();
     }
 
     @Transactional
-    public void deleteLinearProgrammingModel(LinearProgramming linearProgramming) {
-        linearProgrammingDAO.deleteById(linearProgramming.getId());
+    public void updateName(Integer id, String name) {
+        if (operationRepository.existsById(id)) {
+            operationRepository.findById(id)
+                    .get().setName(name);
+            operationRepository.flush();
+        }
+    }
+
+    @Transactional
+    public void delete(Integer id) {
+        operationRepository.deleteById(id);
     }
 }

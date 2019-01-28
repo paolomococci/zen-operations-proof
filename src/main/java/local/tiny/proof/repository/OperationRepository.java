@@ -16,32 +16,16 @@
  *
  */
 
-package local.tiny.proof.model;
+package local.tiny.proof.repository;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
-@Entity
-@Table(name = "LP_MODELS",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"NAME"}))
-public class LinearProgramming {
+import local.tiny.proof.model.Operation;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+@Repository
+public interface OperationRepository
+        extends JpaRepository<Operation, Integer> {
 
-    @NotBlank
-    private String name;
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    Operation findByName(String name);
 }
