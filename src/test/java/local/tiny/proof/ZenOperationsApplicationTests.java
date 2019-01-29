@@ -33,7 +33,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ProofApplicationTests {
+public class ZenOperationsApplicationTests {
     
     @Autowired
     private MockMvc mockMvc;
