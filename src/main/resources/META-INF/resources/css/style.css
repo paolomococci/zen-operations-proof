@@ -20,3 +20,7 @@
 /* 
     Author     : paolo mococci
 */
+
+ul {
+    list-style: decimal;
+}
