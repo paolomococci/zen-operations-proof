@@ -29,8 +29,14 @@ public class WebConf
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/home.xhtml");
-        registry.addViewController("/home").setViewName("forward:/home.xhtml");
+        registry.addViewController("/")
+                .setViewName("forward:/home.xhtml");
+        registry.addViewController("/home")
+                .setViewName("forward:/home.xhtml");
+        registry.addViewController("/linear-programming")
+                .setViewName("forward:/linear-programming.xhtml");
+        registry.addViewController("/sensitive-analysis-and-duality")
+                .setViewName("forward:/sensitive-analysis-and-duality.xhtml");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
         WebMvcConfigurer.super.addViewControllers(registry);
     }
