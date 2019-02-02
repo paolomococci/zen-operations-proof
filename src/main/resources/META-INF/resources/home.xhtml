@@ -1,17 +1,81 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 template="../../templates/ui.xhtml">
-    <ui:define name="head">
-        <style type="text/css">
-            
-        </style>
-    </ui:define>
+    <ui:define name="head"></ui:define>
     <ui:define name="content">
-        <h:form id="verticalTab">
-          <!-- to do -->
+        <h:form id="tabIndex">
+            <p:panel 
+                id="index" 
+                header="zen operations proof - index" 
+                footer="opertions research options">
+                <h:panelGrid columns="1" cellpadding="10">
+                    <p:tabView orientation="left">
+                        <!-- linear programming tab -->
+                        <p:tab id="linearProgramming" 
+                               title="linear programming"
+                               disabled="false">
+                            <h:panelGrid columns="1" cellpadding="5">
+                                <ul>
+                                    <li>
+                                        <a href="linear-programming">
+                                            linear programming
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="sensitive-analysis-and-duality">
+                                            sensitive analysis and duality
+                                        </a>
+                                    </li>
+                                </ul>
+                            </h:panelGrid>
+                        </p:tab>
+                        <!-- integer programming tab -->
+                        <p:tab id="integerProgramming" 
+                               title="integer programming" 
+                               disabled="true">
+                            <h:panelGrid columns="1" cellpadding="5">
+                                <ul>
+                                    <li>
+                                        <a>
+                                            to do
+                                        </a>
+                                    </li>
+                                </ul>
+                            </h:panelGrid>
+                        </p:tab>
+                        <!-- non-linear programming tab -->
+                        <p:tab id="nonLinearProgramming" 
+                               title="non-linear programming" 
+                               disabled="true">
+                            <h:panelGrid columns="1" cellpadding="5">
+                                <ul>
+                                    <li>
+                                        <a>
+                                            to do
+                                        </a>
+                                    </li>
+                                </ul>
+                            </h:panelGrid>
+                        </p:tab>
+                        <!-- dynamic programming tab -->
+                        <p:tab id="dynamicProgramming" 
+                               title="dynamic programming" 
+                               disabled="true">
+                            <h:panelGrid columns="1" cellpadding="5">
+                                <ul>
+                                    <li>
+                                        <a>
+                                            to do
+                                        </a>
+                                    </li>
+                                </ul>
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                </h:panelGrid>
+            </p:panel>
         </h:form>
     </ui:define>
 </ui:composition>
