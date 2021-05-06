@@ -18,7 +18,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <joinfaces.version>4.1.0-m2</joinfaces.version>
+        <joinfaces.version>4.5.0-m2</joinfaces.version>
     </properties>
 
     <dependencyManagement>
